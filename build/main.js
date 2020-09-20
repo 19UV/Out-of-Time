@@ -16,11 +16,8 @@ app.on('window-all-closed', () => {
 });
 
 function createWindow() {
-  const window_aspect = [192, 108];
-  const window_mult = 4;
-  const window_size = [window_aspect[0]*window_mult, window_aspect[1]*window_mult];
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: window_size[0], height: window_size[1] });
+  mainWindow = new BrowserWindow({ width: 960, height: 660 });
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
