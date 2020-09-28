@@ -1,5 +1,10 @@
 game.resources = [
     {
+        "name": "32x32_map_tile v3.1 [MARGINLESS]",
+        "type": "image",
+        "src": "data/img/map/32x32_map_tile v3.1 [MARGINLESS].png"
+    },
+    {
         "name": "tavern",
         "type": "image",
         "src": "data/img/map/tavern.png"
@@ -10,6 +15,11 @@ game.resources = [
         "src": "data/img/player.png"
     },
     {
+        "name": "main_village",
+        "type": "tmx",
+        "src": "data/map/main_village.tmx"
+    },
+    {
         "name": "tavern_bedroom",
         "type": "tmx",
         "src": "data/map/tavern_bedroom.tmx"
@@ -18,6 +28,11 @@ game.resources = [
         "name": "tavern-bedroom2",
         "type": "tmx",
         "src": "data/map/tavern-bedroom2.tmx"
+    },
+    {
+        "name": "32x32_map_tile v3.1 [MARGINLESS]",
+        "type": "tsx",
+        "src": "data/img/map/32x32_map_tile v3.1 [MARGINLESS].tsx"
     },
     {
         "name": "tavern",
