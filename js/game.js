@@ -1,7 +1,22 @@
 
 /* Game namespace */
 var game = {
-
+    dialog: {
+        display: false,
+        speaker: "",
+        body_text: "",
+        play_dialog: function(speaker, text, time, callback) {
+            this.speaker = speaker;
+            this.body_text = text;
+            this.display = true;
+            setTimeout(function() {
+                game.dialog.display = false;
+                callback();
+            }, time);
+        }
+        
+    },
+    
     // an object where to store game information
     data : {
         // score
@@ -20,7 +35,10 @@ var game = {
         me.audio.init("mp3,ogg");
 
         // set and load all resources.
-        // (this will also automatically switch to the loading screen)
+        game.resources = game.resources.concat([
+            { name: "oot_font", type: "binary", src: "data/fnt/out-of-time.fnt" },
+            { name: "oot_font", type: "image", src: "data/fnt/out-of-time.png" }
+        ]);
         me.loader.preload(game.resources, this.loaded.bind(this));
     },
 
@@ -41,7 +59,7 @@ var game = {
         me.input.bindKey(me.input.KEY.S, "down");
         me.input.bindKey(me.input.KEY.A,  "left");
         me.input.bindKey(me.input.KEY.D, "right");
-
+        
         // Start the game.
         me.state.change(me.state.PLAY);
     }

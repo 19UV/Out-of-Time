@@ -1,5 +1,10 @@
 game.resources = [
     {
+        "name": "dialog_background",
+        "type": "image",
+        "src": "data/img/dialog_background.png"
+    },
+    {
         "name": "32x32_map_tile v3.1 [MARGINLESS]",
         "type": "image",
         "src": "data/img/map/32x32_map_tile v3.1 [MARGINLESS].png"
