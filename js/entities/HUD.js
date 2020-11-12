@@ -29,9 +29,9 @@ game.HUD.Container = me.Container.extend({
 
 game.DialogGUI.Container = me.Container.extend({
     init: function() {
+        this._super(me.Container, "init");
         this.visible_state = 0;
         this.visible = true;
-        this._super(me.Container, "init");
         this.isPersistent = true;
         this.floating = true;
         this.name = "dialog_gui";
@@ -42,10 +42,15 @@ game.DialogGUI.Container = me.Container.extend({
             text: ""
         };
         
-        this.dialog_head = new me.BitmapText(4, 500+4, text_const);
-        this.dialog_body = new me.BitmapText(4, 500+21, text_const);
+        game.dialog.play_dialog("Blacksmith", "Hello sir! Pardon me for asking, but do I know\nyou?", 10000, ()=>{});
         
-        this.addChild(new game.HUD.Dialog_Background(480, 500));
+        this.dialog_head = new me.BitmapText(8, 200+4, text_const);
+        this.dialog_body = new me.BitmapText(8, 200+21, text_const);
+        
+        this.dialog_background = new game.HUD.Dialog_Background(4,200+4);
+        
+        // this.addChild(new game.HUD.Dialog_Background(480, 500));
+        this.addChild(this.dialog_background);
         
         this.addChild(this.dialog_head);
         this.addChild(this.dialog_body);
@@ -58,8 +63,11 @@ game.DialogGUI.Container = me.Container.extend({
         this.dialog_head.setText(game.dialog.speaker);
         this.dialog_body.setText(game.dialog.body_text);
         
-        this.dialog_head.draw(renderer, "", 0, 0);
-        this.dialog_body.draw(renderer, "", 0, 0);
+        if (game.dialog.display) {
+            this.dialog_background.draw(renderer);
+            this.dialog_head.draw(renderer, "", 0, 0);
+            this.dialog_body.draw(renderer, "", 0, 0);
+        }
     }
 });
 
@@ -67,19 +75,19 @@ game.HUD.Dialog_Background = me.GUI_Object.extend({
     init: function(x, y) {
         var settings = {};
         settings.image = "dialog_background";
-        settings.framewidth = 720;
+        settings.framewidth = 720*0.6;
         settings.frameheight = 150;
         
         this._super(me.GUI_Object, "init", [x, y, settings]);
         
         this.name = "Dialog_Background";
+        this.alpha = 0;
         
-        this.pos.z = 4;
+        this.pos.z = 10;
+        console.log(this);
     },
     
-    update: function() {
-        this.alpha = game.dialog.display ? 0 : 1;
-    }
+    // update: function() {},
 });
 
 /**

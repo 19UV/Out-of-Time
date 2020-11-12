@@ -97,3 +97,16 @@ game.PlayerEntity = me.Entity.extend({
         return true;
     }
 });
+
+
+game.doorChecker = me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Enity, "init", [x,y,settings]);
+        this.body.collisionType = me.collision.ACTION_OBJECT;
+        this.checkpoint_type = settings.id;
+    },
+    
+    onCollision: function(response, other) {
+        return false;
+    }
+})

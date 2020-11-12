@@ -15,6 +15,11 @@ game.resources = [
         "src": "data/img/map/tavern.png"
     },
     {
+        "name": "world",
+        "type": "image",
+        "src": "data/img/map/world.png"
+    },
+    {
         "name": "player",
         "type": "image",
         "src": "data/img/player.png"
@@ -43,5 +48,10 @@ game.resources = [
         "name": "tavern",
         "type": "tsx",
         "src": "data/img/map/tavern.tsx"
+    },
+    {
+        "name": "world",
+        "type": "tsx",
+        "src": "data/img/map/world.tsx"
     }
 ];
